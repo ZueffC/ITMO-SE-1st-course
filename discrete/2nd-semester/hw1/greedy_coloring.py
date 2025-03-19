@@ -3,17 +3,17 @@ import sys
 
 
 def graph_coloring(matrix: list[list[int]]) -> list[int]:
-    verteces_count: int = len(matrix)
+    vertices_count: int = len(matrix)
     degrees: list[int] = [sum(row) for row in matrix]
 
-    sorted_verteces: list[int] = sorted(range(verteces_count), key = lambda v: degrees[v], reverse = True)
-    colors: list[int] = [-1] * verteces_count
+    sorted_vertices: list[int] = sorted(range(vertices_count), key = lambda v: degrees[v], reverse = True)
+    colors: list[int] = [-1] * vertices_count
 
-    for vertex in sorted_verteces:
+    for vertex in sorted_vertices:
         neighbor_colors: set[int] = set()
         curr_color = 0
 
-        for neighbor_vertex in range(verteces_count):
+        for neighbor_vertex in range(vertices_count):
             if matrix[vertex][neighbor_vertex] == 1 and colors[neighbor_vertex] != -1:
                 neighbor_colors.add(colors[neighbor_vertex])
 
